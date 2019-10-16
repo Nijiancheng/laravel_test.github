@@ -1,0 +1,48 @@
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color:#636b6f;
+    cursor:pointer;
+}
+body{
+    padding:0;
+    margin:0;
+}
+table{
+    margin:50px auto;
+}
+td{
+    text-align: center;
+}
+
+.action-box{
+    top:0;
+    position: fixed;
+    display:none;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+.action-box .edit-form,.add-form{
+    display:none;
+    padding:20px;
+    background-color: #fff;
+    border-radius:5px;
+    width: 300px;
+    height: 150px;
+}
+.action-box .input{
+    margin-top:15px;
+}
+.pagination{
+    display:flex;
+    justify-content: center;
+}
+.pagination a,span{
+    padding:5px 10px;
+    margin:0 10px;
+}
