@@ -25,7 +25,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/resources/views/admin/user.blade.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" root2="SKIP_INSPECTION" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -127,9 +131,10 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1SBf8iDx1wTxzIMYtrN1oPaqXxP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../project/thinkphp_5.0.24_with_extend" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -185,10 +190,32 @@
       <workItem from="1571101352906" duration="11671000" />
       <workItem from="1571147339502" duration="7901000" />
       <workItem from="1571187924010" duration="29057000" />
+      <workItem from="1571239812887" duration="105000" />
+      <workItem from="1571274177782" duration="27088000" />
+      <workItem from="1571359530205" duration="10035000" />
+      <workItem from="1571379787470" duration="5278000" />
+      <workItem from="1571625237981" duration="906000" />
+      <workItem from="1571637597711" duration="18580000" />
+      <workItem from="1571706025433" duration="249000" />
+      <workItem from="1571710795649" duration="3791000" />
+      <workItem from="1571759043316" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -65,7 +65,7 @@
                   <form action="/login" method="post" class="form-validate mb-4">
                       {{ csrf_field() }}
                     <div class="form-group">
-                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
+                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material" >
                       <label for="login-username" class="label-material">用户名</label>
                     </div>
 {{--                    <div class="form-group">--}}
@@ -78,7 +78,7 @@
                       </div>
                     <button type="submit" class="btn btn-primary">登录</button>
 {{--                      <a href="#" class="forgot-pass">Forgot Password?</a>--}}
-                  </form><br><small>没有账号? </small><a href="/toReg" class="signup">去注册</a>
+                  </form><br><small>没有账号? </small><a href="/reg" class="signup">去注册</a>
                 </div>
               </div>
             </div>

@@ -58,25 +58,27 @@
                   <form class="text-left form-validate" action="reg" method="post">
                       {{ csrf_field() }}
                     <div class="form-group-material">
-                      <input id="register-username" type="text" name="name" required data-msg="Please enter your username" class="input-material">
+                      <input id="register-username" type="text" name="name" required data-msg="请输入邮箱的用户名" class="input-material" value="{{old('name')}}">
                       <label for="register-username" class="label-material">用户名</label>
                     </div>
                     <div class="form-group-material">
-                      <input id="register-email" type="email" name="email" required data-msg="Please enter a valid email address" class="input-material">
+                      <input id="register-email" type="email" name="email" required data-msg="请输入有效的邮箱地址" class="input-material" value="{{old('email')}}">
                       <label for="register-email" class="label-material">邮箱地址      </label>
                     </div>
                     <div class="form-group-material">
-                      <input id="register-password" type="password" name="password" required data-msg="Please enter your password" class="input-material">
+                      <input id="register-password" type="password" name="password" required data-msg="请输入有效密码" class="input-material">
                       <label for="register-password" class="label-material">密码        </label>
                     </div>
-{{--                    <div class="form-group terms-conditions text-center">--}}
-{{--                      <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">--}}
-{{--                      <label for="register-agree">I agree with the terms and policy</label>--}}
-{{--                    </div>--}}
+                      <div class="form-group-material">
+                          @foreach($user->sex() as $int=>$val)
+                              <input type="radio"  class="" name="sex" value="{{$int}}" {{$int == 0?'checked':''}}> {{$val}}
+                          @endforeach
+{{--                              <label class="label-material">用户性别</label><br>--}}
+                      </div>
                     <div class="form-group text-center">
-                      <input id="register" type="submit" value="Register" class="btn btn-primary">
+                      <input id="register" type="submit" value="注册" class="btn btn-primary">
                     </div>
-                  </form><small>已有账号? </small><a href="/toLogin" class="signup">去登录</a>
+                  </form><small>已有账号? </small><a href="{{url()}}" class="signup">去登录</a>
                 </div>
               </div>
             </div>

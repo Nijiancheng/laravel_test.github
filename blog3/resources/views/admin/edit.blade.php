@@ -20,7 +20,7 @@
                 <!-- Basic Form-->
                 <div class="col-lg-11">
                     <div class="block">
-                        <div class="title"><strong class="d-block">修改用户信息</strong><span class="d-block">Lorem ipsum dolor sit amet consectetur.</span></div>
+                        <div class="title"><strong class="d-block">修改用户信息</strong><span class="d-block"></span></div>
                         <div class="block-body">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -31,16 +31,23 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form  action="/user/edit" method = "post">
+                            <form  action="/edit" method = "post">
                                 {{ csrf_field() }}
                                 <input type="hidden" name = "id" value="{{$info->id}}">
+{{--                                <input type="hidden" name = "url" value="{{$url}}">--}}
                                 <div class="form-group">
                                     <label class="form-control-label">用户名</label>
-                                    <input type="text" placeholder="请输入用户名" class="form-control" name="name" value="{{$info->name}}">
+                                    <input type="text" placeholder="请输入用户名" class="form-control" name="name" value="{{old('name')?old('name'):$info->name}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">用户邮箱</label>
-                                    <input type="email" placeholder="请输入邮箱" class="form-control" name="email" value="{{$info->email}}">
+                                    <input type="email" placeholder="请输入邮箱" class="form-control" name="email" value="{{old('email')?old('email'):$info->email}}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">用户性别</label><br>
+                                    @foreach($info->sex() as $int=>$val)
+                                        <input type="radio"  class="" name="sex" value="{{$int}}" {{$int == $info->sex?'checked':''}}> {{$val}}
+                                    @endforeach
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="修改" class="btn btn-primary">

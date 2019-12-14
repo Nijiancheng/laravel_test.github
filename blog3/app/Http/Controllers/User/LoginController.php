@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers\User;
 
-
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 
@@ -14,14 +13,25 @@ class LoginController
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function login(Request $request){
+    public function login(Request $request)
+    {
+        if ($request->isMethod('get')) {
+
+            return view('admin.login');
+        }
         $name = $request->get('loginUsername');
         $pwd = $request->get('password');
-        $res = UserModel::where(['name'=>$name,'password'=>$pwd])->first();
-        if($res){
-            return redirect('/admin');
-        }else{
-            return redirect('/toReg');
+        $res = UserModel::where(['name' => $name])->first();
+        if ($res) {
+            if ($pwd == decrypt($res->password)) {
+                session()->put('name', $name);
+                return redirect('/admin');
+            } else {
+
+                return view('admin.login')->withErrors(['密码错误,请重试']);
+            }
+        } else {
+            return redirect('/reg');
         }
     }
 
@@ -32,20 +42,31 @@ class LoginController
      */
     public function reg(Request $request)
     {
+        if ($request->isMethod('get')) {
+            $user = new UserModel();
+            return view('admin.register',['user'=>$user]);
+        }
         $request->validate([
-            'name' => 'required|between:3,25|unique:users',
+            'name' => 'required|between:2,25|unique:users',
             'email' => 'required|email|unique:users',
-            'password'=>'required|between:6,15',
+            'password' => 'required|between:6,15',
         ]);
         $name = $request->get('name');
-        $email =  $request->get('email');
-        $password =  $request->get('password');
-        $res = UserModel::create(['name' => $name,'email' =>$email,'password'=>$password]);
+        $email = $request->get('email');
+        $sex = $request->get('sex');
+        $password = encrypt($request->get('password'));
+        $res = UserModel::create(['name' => $name, 'email' => $email, 'password' => $password,'sex'=>$sex]);
         if ($res) {
-            return redirect('/toLogin');
+            return redirect('/login');
         } else {
-            return view('/toReg');
+            return redirect('/reg');
         }
 
+    }
+
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect('login');
     }
 }

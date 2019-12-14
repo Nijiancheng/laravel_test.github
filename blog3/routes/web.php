@@ -14,25 +14,33 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/add',function(){
-    return view('admin.add');
-});
-Route::get('/admin','User\UserController@index');
-Route::get('/toLogin',function(){
-    return view('admin.login');
-});
-Route::get('/toReg',function(){
-    return view('admin.register');
-});
-Route::post('login','User\LoginController@login');
-Route::post('reg','User\LoginController@reg');
-Route::get('/edit/{id}','User\UserController@toEdit');
-Route::get('/user/select', 'User\UserController@select');
-Route::get('/user', 'User\UserController@index');
-Route::post('/user/edit', 'User\UserController@edit');
-Route::post('/user/add', 'User\UserController@create');
-Route::delete('/user/del/{id}', 'User\UserController@delete');
+
+//Route::get('/toReg',function(){
+//    return view('admin.register');
+//});
+//Route::post('/reg','User\LoginController@reg');
+Route::match(['get','post'],'reg','User\LoginController@reg');
+//Route::get('/toLogin',function(){
+//    return view('admin.login');
+//});
+//Route::post('/login','User\LoginController@login');
+Route::match(['get','post'],'login','User\LoginController@login')->name("login");
+Route::get('/admin','User\UserController@index')->middleware('login')->name("admin");
+Route::get('/user/select', 'User\UserController@index')->middleware('login')->name("select");
+
+Route::get('/logout','User\LoginController@logout')->name("login");
+
+//Route::get('/edit','User\UserController@edit')->middleware('login');
+//Route::post('/user/edit', 'User\UserController@edit')->middleware('login');
+Route::match(['get','post'],'/edit','User\UserController@edit')->middleware('login')->name("edit");
+Route::get('/user', 'User\UserController@index')->middleware('login')->name("user");
+//Route::get('/add',function(){
+//    return view('admin.add');
+//});
+//Route::post('/user/add', 'User\UserController@create')->middleware('login');
+Route::match(['get','post'],'/add','User\UserController@create')->middleware('login')->name("add");
+Route::post('/user/del', 'User\UserController@delete')->middleware('login')->name("del");
 
 
-Route::get('post/create', 'PostController@create');
-Route::post('post', 'PostController@store');
+//Route::get('post/create', 'PostController@create');
+//Route::post('post', 'PostController@store');
